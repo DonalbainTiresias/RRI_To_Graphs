@@ -144,7 +144,7 @@ for root, dirs, files in os.walk(rootPath):
 repo = git.Repo(search_parent_directories=True)
 sha = repo.head.object.hexsha
 
-
+git_push()
 
 readme='Date of creation: ' +str(datetime.datetime.today().strftime('%Y-%m-%d')) +'\nGit Hash of Software Used: ' +str(sha) + '\nRepositoryAddress: https://github.com/DonalbainTiresias/RRI_To_Graphs.git'  
 print readme
