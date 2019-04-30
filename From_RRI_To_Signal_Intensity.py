@@ -43,37 +43,17 @@ dirpath=dirpath.replace('BOOK',str(book))
 
 #%%
 
-def LineFitter(signal,cutoff=0.1, spacing=2):
-    x=np.arange(1,(len(signal)+1))
-    a=int(len(x)*cutoff)     
-    b=spacing*a
-    c=int(len(x)*(1-(spacing*cutoff)))
-    d=int(len(x)*(1-cutoff))
-    Fitted_y=np.arange(float(1),(len(signal)+1))
-    Delta_y = np.arange(float(1),(len(signal)+1))
-    Normalised_y = np.arange(float(1),(len(signal)+1))
-    Filtered_y=np.append(signal[a:b], signal[c:d])
-    Filtered_x=np.append(x[a:b], x[c:d])
- 
-
-    mod=lmfit.models.LinearModel()
-    params=params=mod.guess(Filtered_y, x=Filtered_x)
-    Line_Fit=mod.fit(Filtered_y,params, x=Filtered_x)
-    Best_Fit=mod.fit(Filtered_y,params, x=Filtered_x).best_fit
-    Fitted_slope=Line_Fit.params['slope'].value
-    Fitted_intercept=Line_Fit.params['intercept'].value
-
-    def StraightLine(x):
-        y=(Fitted_slope*x)+Fitted_intercept
-        return(y)
-          
-    Fitted_y=np.fromfunction(StraightLine,(len(signal),))
-    Delta_y = Fitted_y - signal
-    Normalised_y = Delta_y / Fitted_y
-    #Normalised_y=pd.DataFrame(data=Normalised_y)
-    
-    #return Normalised_y
-    return pd.Series([Fitted_y, Delta_y, Normalised_y], index=['Fitted_y', 'Delta_y', 'Normalised_y'])
+def git_push():
+    try:
+        
+        repo.git.add(update=True)
+        repo.index.commit('Updated From Within Software')
+        origin = repo.remote(name='origin')
+        origin.push()
+    except:
+        print('Some error occured while pushing the code')
+    finally:
+        print('Code push from script succeeded')      
 
 
 
@@ -100,14 +80,7 @@ def Splitter(data,Number_of_Chunks):
     
     return (Split_Data)
 
-def Average(data, loops):
     
-    chunklength=int(len(data)/loops)
-    Split_Data = np.array(zip(*[iter(data)]*chunklength))
-    average=np.mean(Split_Data, axis=0)
-    average=pd.Series(average)
-    
-    return(average)    
     
 def Split_Then_Gauss(data,Number_of_Tubes):
       
@@ -118,26 +91,12 @@ def Split_Then_Gauss(data,Number_of_Tubes):
     return(GaussHeights)
 
 
-def LorentzGetter(newlist,start=150,stop=200):
-    
-    inputdata=np.array(newlist[start:stop])
-    Filtered_x=np.array(range(start,stop))
-    
-    mod=lmfit.models.LorentzianModel()
-    mod.set_param_hint('center', value=((start-stop)/2)+start)
-    params=mod.guess(inputdata,x=Filtered_x)
-    Gaussian_Output=mod.fit(inputdata,params, x=Filtered_x)
-   
-    centre=Gaussian_Output.params['center'].value
-    Outputheight=Gaussian_Output.params['height'].value
-    Lorentzian_Fit=mod.fit(inputdata,params, x=Filtered_x).best_fit        
-    
-    return pd.Series([ Lorentzian_Fit, Filtered_x, Outputheight], index=['Fitted_y', 'Filtered_x', 'Gauss_Height'])
 
-start_time= time.time()# Initial set up: Clear all the previous graphs from the screen. 
+
+ 
 
 #%%
-
+start_time= time.time()# Initial set up: Clear all the previous graphs from the screen.
 plt.close('all')
 
 
@@ -184,6 +143,7 @@ for root, dirs, files in os.walk(rootPath):
 #%%    
 repo = git.Repo(search_parent_directories=True)
 sha = repo.head.object.hexsha
+
 
 
 readme='Date of creation: ' +str(datetime.datetime.today().strftime('%Y-%m-%d')) +'\nGit Hash of Software Used: ' +str(sha) + '\nRepositoryAddress: https://github.com/DonalbainTiresias/RRI_To_Graphs.git'  
