@@ -23,8 +23,6 @@ drive='z'
 book='1'
 page='199'
 
-start=200
-stop=600
 #This sets the range of the data to be looked at for finding the peak of the Lorentzian fit.
 
 
@@ -188,7 +186,7 @@ repo = git.Repo(search_parent_directories=True)
 sha = repo.head.object.hexsha
 
 
-readme='Date of creation: ' +str(datetime.datetime.today().strftime('%Y-%m-%d')) +'\nGit Hash of Software Used: ' +str(sha) + '\nRepositoryAddress: https://github.com/DonalbainTiresias/Three_Tube_TDLS_Graphs.git'  
+readme='Date of creation: ' +str(datetime.datetime.today().strftime('%Y-%m-%d')) +'\nGit Hash of Software Used: ' +str(sha) + '\nRepositoryAddress: https://github.com/DonalbainTiresias/RRI_To_Graphs.git'  
 print readme
 textfilename=dirpath+page+'\\b'+book+'p'+page+os.path.basename(__file__)+'.txt'
 
