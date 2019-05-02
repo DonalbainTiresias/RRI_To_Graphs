@@ -19,9 +19,9 @@ print str(datetime.datetime.now())
 
 #Test Test Test
 #%%
-drive='z'
-book='1'
-page='199'
+drive='c'
+book='2'
+page='45b'
 
 #This sets the range of the data to be looked at for finding the peak of the Lorentzian fit.
 
