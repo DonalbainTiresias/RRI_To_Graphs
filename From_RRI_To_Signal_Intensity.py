@@ -21,7 +21,7 @@ print str(datetime.datetime.now())
 #%%
 drive='z'
 book='2'
-page='63a,'
+page='63c'
 
 #This sets the range of the data to be looked at for finding the peak of the Lorentzian fit.
 
