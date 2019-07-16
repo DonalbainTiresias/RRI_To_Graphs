@@ -15,7 +15,7 @@ import fnmatch
 import git
 import datetime
 
-print str(datetime.datetime.now())
+print (str(datetime.datetime.now()))
 
 #Test Test Test
 #%%
@@ -114,7 +114,7 @@ for root, dirs, files in os.walk(rootPath):
     for filename in fnmatch.filter(files, pattern):
         dirlist = ( os.path.join(root, filename))
         with open(dirlist, 'r') as f:
-            print filename
+            print (filename)
             timea=time.time()
             my_csv=pd.read_csv(f) 
             amplitudes=my_csv.drop(my_csv.columns[0], axis = 1 )
@@ -122,7 +122,7 @@ for root, dirs, files in os.walk(rootPath):
 
             
             heights = Intensities.apply(Split_Then_Gauss, axis=1, args=[Number_Of_Tubes])
-            print 'Heights done'
+            print ('Heights done')
             heights = heights.apply(pd.Series)
             heights.columns=['Calculated Intensity ' + str(int(col+1)) for col in heights.columns]
             consolidateddata=pd.concat([my_csv, heights],axis=1)
@@ -133,9 +133,9 @@ for root, dirs, files in os.walk(rootPath):
             consolidateddata.to_csv(consolidated_data_filename)
             timeb=time.time()
             
-            print (" %s seconds " % (timeb - timea)) +' this loop'
-            print(" %s seconds " % (time.time() - start_time)) +' so far'
-            print(" %s minutes " % ((time.time() - start_time)/60)) +' so far'  
+            print ((" %s seconds " % (timeb - timea)) +' this loop')
+            print((" %s seconds " % (time.time() - start_time)) +' so far')
+            print((" %s minutes " % ((time.time() - start_time)/60)) +' so far')
             
              
     
@@ -147,7 +147,7 @@ sha = repo.head.object.hexsha
 git_push()
 
 readme='Date of creation: ' +str(datetime.datetime.today().strftime('%Y-%m-%d')) +'\nGit Hash of Software Used: ' +str(sha) + '\nRepositoryAddress: https://github.com/DonalbainTiresias/RRI_To_Graphs.git'  
-print readme
+print (readme)
 textfilename=dirpath+page+'\\b'+book+'p'+page+os.path.basename(__file__)+'.txt'
 
 with open(textfilename, "w") as text_file:
