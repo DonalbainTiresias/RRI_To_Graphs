@@ -20,14 +20,14 @@ print (str(datetime.datetime.now()))
 #Test Test Test
 #%%
 drive='z'
-book='2'
-page='63aa'
+book='1'
+page='199'
 
 #This sets the range of the data to be looked at for finding the peak of the Lorentzian fit.
 
 
 
-Number_Of_Tubes=3
+Number_Of_Tubes=1
 
 
  #How many ramps in each run?
