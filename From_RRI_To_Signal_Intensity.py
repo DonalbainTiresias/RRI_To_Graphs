@@ -27,19 +27,16 @@ page='199'
 
 
 
-Number_Of_Tubes=1
-
-
- #How many ramps in each run?
+Number_Of_Tubes=3 #How many ramps in each run?
 
 
 
-#dirpath ='C:\Users\s267636\Desktop\B1P'
-#
+
+
 dirpath= drive + ':\Data\BookBOOK\\bBOOKp'
-#dirpath= 'C:\Data\BookBOOK\\bBOOKp'
+
 dirpath=dirpath.replace('BOOK',str(book))
-#dirpath= 'C:\\Data\\b1p'
+
 
 #%%
 
